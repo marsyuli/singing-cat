@@ -1,5 +1,4 @@
 import pygame
-import random
 import sys
 import os
 
@@ -10,7 +9,10 @@ falling_speed = 0.1
 
 game_screen = pygame.display.set_mode(size)
 pygame.display.set_caption('Игровове окно')
-game_screen.fill('#ffc2cc')
+game_screen.fill('#EFCDD6')
+all_sprites = pygame.sprite.Group()
+cat_group = pygame.sprite.Group()
+board_group = pygame.sprite.Group()
 
 
 def load_image(name, colorkey=None):
@@ -29,23 +31,44 @@ def load_image(name, colorkey=None):
     return image
 
 
-cat_right_image = pygame.transform.scale(load_image('cat_right.png'), (150, 150))
-candy_image = pygame.transform.scale(load_image('candy.png'), (70, 70))
-cat_mouth_image = pygame.transform.scale(load_image('cat_mouth.png'), (150, 150))
-board_image = pygame.transform.scale(load_image('board.png'), (500, 100))
-ice_cream_image = pygame.transform.scale(load_image('ice_cream.png'), (90, 90))
-game_screen.blit(ice_cream_image, (0, 0))
-game_screen.blit(candy_image, (100, 0))
-game_screen.blit(board_image, (0, 405))
-game_screen.blit(cat_mouth_image, (190, 300))
-game_screen.blit(cat_right_image, (50, 305))
-pygame.display.update()
+class Board(pygame.sprite.Sprite):
+    board_image = pygame.transform.scale(load_image('board.png'), (500, 100))
+
+    def __init__(self):
+        super().__init__(all_sprites, board_group)
+        self.image = Board.board_image
+        self.rect = self.image.get_rect()
+        self.rect.x = 0
+        self.rect.y = 405
 
 
+class Cat(pygame.sprite.Sprite):
+    cat_right_image = pygame.transform.scale(load_image('cat_right.png'), (150, 150))
+
+    def __init__(self):
+        super().__init__(all_sprites, cat_group)
+        self.image = Cat.cat_right_image
+        self.rect = self.image.get_rect()
+        self.rect.x = 50
+        self.rect.y = 305
+
+    def update(self, event):
+        if event.key == pygame.K_LEFT:
+            self.rect.x -= 10
+        if event.key == pygame.K_RIGHT:
+            self.rect.x += 10
+
+
+board = Board()
+cat = Cat()
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+            running = False
+        if event.type == pygame.KEYDOWN:
+            cat_group.update(event)
+    game_screen.fill('#EFCDD6')
+    all_sprites.draw(game_screen)
     pygame.display.flip()
+pygame.quit()
