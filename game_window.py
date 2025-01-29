@@ -1,6 +1,7 @@
 import pygame
 import sys
 import os
+import random
 
 
 pygame.init()
@@ -48,27 +49,55 @@ class Cat(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__(all_sprites, cat_group)
         self.image = Cat.cat_right_image
+        self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.x = 50
         self.rect.y = 305
 
     def update(self, event):
         if event.key == pygame.K_LEFT:
-            self.rect.x -= 10
+            if self.rect.x > 15:
+                self.rect.x -= 10
+            else:
+                if event.key == pygame.K_RIGHT:
+                    self.rect.x += 10
         if event.key == pygame.K_RIGHT:
-            self.rect.x += 10
+            if self.rect.x < 350:
+                self.rect.x += 10
+            else:
+                if event.key == pygame.K_LEFT:
+                    self.rect.x -= 10
+
+
+class Ice_cream(pygame.sprite.Sprite):
+    ice_cream_image = pygame.transform.scale(load_image('ice_cream.png'), (90, 90))
+
+    def __init__(self):
+        super().__init__(all_sprites)
+        self.image = Ice_cream.ice_cream_image
+        self.rect = self.image.get_rect()
+        self.mask = pygame.mask.from_surface(self.image)
+        self.rect.x, self.rect.y = random.randint(15, 370), 0
+
+    def update(self):
+        if not pygame.sprite.collide_mask(self, cat):
+            self.rect = self.rect.move(0, 1)
 
 
 board = Board()
 cat = Cat()
 running = True
+clock = pygame.time.Clock()
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN:
             cat_group.update(event)
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            Ice_cream()
     game_screen.fill('#EFCDD6')
     all_sprites.draw(game_screen)
+    clock.tick(50)
     pygame.display.flip()
 pygame.quit()
