@@ -2,7 +2,6 @@ import pygame
 import sys
 import os
 
-
 pygame.init()
 size = surface_width, surface_height = 800, 600
 
@@ -18,6 +17,8 @@ pygame.mixer.music.play()
 
 buttonFont = pygame.font.Font('fonts/Collect Em All BB.ttf', 28)
 buttons = []
+
+
 class Button:
     def __init__(self, x, y, width, height, buttonText='', function=None, onePress=False):
         self.x, self.y, self.width, self.height = x, y, width, height
@@ -58,9 +59,11 @@ class Button:
 def func():
     print(':)')
 
+
 def exit():
     pygame.quit()
     sys.exit()
+
 
 Button(100, 230, 600, 80, 'Играть', func)
 Button(100, 320, 600, 80, 'Правила', func)
@@ -81,7 +84,6 @@ def image_load(name, colorkey=None):
     else:
         image = image.convert_alpha()
     return image
-
 
 
 class MusicButton:

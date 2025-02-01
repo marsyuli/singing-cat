@@ -2,20 +2,16 @@ import pygame
 import sys
 import os
 import random
+from Sprite import board_group, cat_group, candy_group, all_sprites, ice_cream_group
 
 
 pygame.init()
 size = width, height = 500, 600
-falling_speed = 0.1
+font_name = pygame.font.match_font('arial')
 
 game_screen = pygame.display.set_mode(size)
 pygame.display.set_caption('Игровове окно')
 game_screen.fill('#EFCDD6')
-all_sprites = pygame.sprite.Group()
-cat_group = pygame.sprite.Group()
-board_group = pygame.sprite.Group()
-ice_cream_group = pygame.sprite.Group()
-candy_group = pygame.sprite.Group()
 
 
 def load_image(name, colorkey=None):
@@ -32,6 +28,14 @@ def load_image(name, colorkey=None):
     else:
         image = image.convert_alpha()
     return image
+
+
+def draw_text(surf, text, size_text, x, y):
+    font = pygame.font.Font(font_name, size_text)
+    text_surface = font.render(text, True, 'white')
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (x, y)
+    surf.blit(text_surface, text_rect)
 
 
 class Board(pygame.sprite.Sprite):
@@ -51,8 +55,8 @@ class Cat(pygame.sprite.Sprite):
 
     def __init__(self):
         super().__init__(all_sprites, cat_group)
-        self.image = Cat.cat_right_image
-        self.mask = pygame.mask.from_surface(self.image)
+        self.image = self.orig = Cat.cat_right_image
+
         self.rect = self.image.get_rect()
         self.rect.x = 50
         self.rect.y = 305
@@ -60,16 +64,12 @@ class Cat(pygame.sprite.Sprite):
     def update(self, event):
         if event.key == pygame.K_LEFT:
             if self.rect.x > 15:
-                self.rect.x -= 15
-            else:
-                if event.key == pygame.K_RIGHT:
-                    self.rect.x += 10
+                self.rect.x -= 25
+                self.image = Cat.cat_right_image
         if event.key == pygame.K_RIGHT:
             if self.rect.x < 350:
                 self.rect.x += 10
-            else:
-                if event.key == pygame.K_LEFT:
-                    self.rect.x -= 10
+                self.image = Cat.cat_right_image
 
 
 class Ice_cream(pygame.sprite.Sprite):
@@ -80,14 +80,16 @@ class Ice_cream(pygame.sprite.Sprite):
         self.image = Ice_cream.ice_cream_image
         self.rect = self.image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
-        self.rect.x, self.rect.y = random.randint(15, 370), 0
+        self.rect.x, self.rect.y = random.randint(15, 370), -80
 
     def update(self):
+        global quantity
         if not pygame.sprite.collide_mask(self, cat):
             self.rect = self.rect.move(0, 1)
         else:
             cat.image = cat.cat_2
             self.kill()
+            quantity += 1
 
 
 class Candy(pygame.sprite.Sprite):
@@ -98,20 +100,24 @@ class Candy(pygame.sprite.Sprite):
         self.image = Candy.candy_image
         self.rect = self.image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
-        self.rect.x, self.rect.y = random.randint(15, 370), 0
+        self.rect.x, self.rect.y = random.randint(15, 370), -80
 
     def update(self):
+        global quantity
         if not pygame.sprite.collide_mask(self, cat):
             self.rect = self.rect.move(0, 1)
         else:
             cat.image = cat.cat_2
             self.kill()
+            quantity += 1
 
 
 board = Board()
 cat = Cat()
 running = True
 clock = pygame.time.Clock()
+quantity = 0
+draw_rot = False
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -125,6 +131,7 @@ while running:
             else:
                 Candy()
     game_screen.fill('#EFCDD6')
+    draw_text(game_screen, str(quantity), 18, width / 2, 10)
     all_sprites.draw(game_screen)
     candy_group.update()
     ice_cream_group.update()
