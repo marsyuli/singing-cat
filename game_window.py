@@ -11,7 +11,6 @@ font_name = pygame.font.match_font('arial')
 
 game_screen = pygame.display.set_mode(size)
 pygame.display.set_caption('Игровове окно')
-game_screen.fill('#EFCDD6')
 
 pygame.mixer.music.load('music/Billie_Eilish-What_Was_I_Made_For.mp3')
 
@@ -32,15 +31,17 @@ def load_image(name, colorkey=None):
     return image
 
 
-def game_over_screen():
+def game_over_screen(): # Создание финального окна
     fon_game_over_image = pygame.transform.scale(load_image('fon.jpg'), (500, 600))
     game_screen.blit(fon_game_over_image, (0, 0))
     draw_text(game_screen, 'Игра окончена', 36, width / 2, 50, 'black')
-    draw_text(game_screen, f'Ваш счет: {quantity}', 24, width / 2, 95, '#91231D')
-    draw_text(game_screen, f'Ваш лучший результат:', 24, width / 2, 130, '#91231D')
+    draw_text(game_screen, f'Ваш счет: {quantity}', 24, width / 2, 95,
+              '#91231D')
+    draw_text(game_screen, f'Ваш лучший результат:', 24, width / 2, 130,
+              '#91231D')
 
 
-def draw_text(surf, text, size_text, x, y, color):
+def draw_text(surf, text, size_text, x, y, color): # Функция для создания текста
     font = pygame.font.Font(font_name, size_text)
     text_surface = font.render(text, True, color)
     text_rect = text_surface.get_rect()
@@ -78,11 +79,11 @@ class Cat(pygame.sprite.Sprite): # Создание кота
         # Передвижение кота + изменение картинки
         if event.key == pygame.K_LEFT:
             if self.rect.x > 15:
-                self.rect.x -= 10
+                self.rect.x -= 8
                 self.image = Cat.cat_right_image
         if event.key == pygame.K_RIGHT:
             if self.rect.x < 350:
-                self.rect.x += 10
+                self.rect.x += 8
                 self.image = Cat.cat_left_image
 
 
@@ -99,17 +100,19 @@ class Ice_cream(pygame.sprite.Sprite): # Создание мороженого
 
     def update(self): # Передвижение мороженого + удаление мороженого + изменение кота
         global quantity
-        if not pygame.sprite.collide_mask(self, cat):
-            self.rect = self.rect.move(0, 1)
-            if self.rect.y == 480:
+        if pygame.mixer.music.get_busy():
+            if not pygame.sprite.collide_mask(self, cat):
+                self.rect = self.rect.move(0, 1)
+                if self.rect.y == 480:
+                    quantity -= 10
+                    self.kill()
+            else:
+                if cat.image == cat.cat_right_image:
+                    cat.image = cat.cat_mouth_right
+                elif cat.image == cat.cat_left_image:
+                    cat.image = cat.cat_mouth_image
+                quantity += 10
                 self.kill()
-        else:
-            if cat.image == cat.cat_right_image:
-                cat.image = cat.cat_mouth_right
-            elif cat.image == cat.cat_left_image:
-                cat.image = cat.cat_mouth_image
-            quantity += 1
-            self.kill()
 
 
 class Candy(pygame.sprite.Sprite): # Создание конфеты
@@ -125,17 +128,35 @@ class Candy(pygame.sprite.Sprite): # Создание конфеты
 
     def update(self): # Передвижение конфеты + удаление конфеты + изменение кота
         global quantity
-        if not pygame.sprite.collide_mask(self, cat):
-            self.rect = self.rect.move(0, 1)
-            if self.rect.y == 480:
+        if pygame.mixer.music.get_busy():
+            if not pygame.sprite.collide_mask(self, cat):
+                self.rect = self.rect.move(0, 1)
+                if self.rect.y == 480:
+                    quantity -= 15
+                    self.kill()
+            else:
+                if cat.image == cat.cat_right_image:
+                    cat.image = cat.cat_mouth_right
+                elif cat.image == cat.cat_left_image:
+                    cat.image = cat.cat_mouth_image
+                quantity += 15
                 self.kill()
-        else:
-            if cat.image == cat.cat_right_image:
-                cat.image = cat.cat_mouth_right
-            elif cat.image == cat.cat_left_image:
-                cat.image = cat.cat_mouth_image
-            quantity += 1
-            self.kill()
+
+
+def pause(): # Функция паузы игры
+    paused = True
+    while paused:
+        pygame.mixer.music.pause()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 3:
+                    paused = False
+                    pygame.mixer.music.unpause()
+        pygame.display.update()
+        clock.tick(15)
 
 
 board = Board()
@@ -146,14 +167,12 @@ pygame.mixer.music.play()
 pygame.time.set_timer(pygame.USEREVENT, 2000)
 fon = pygame.transform.scale(load_image('game_fon.jpg'), (500, 600))
 running = True
-while running:
+while running: # Основной игровой цикл
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN:
             cat_group.update(event)
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            pygame.mixer.music.stop()
         if event.type == pygame.USEREVENT:
             if pygame.mixer.music.get_busy():
                 candy_or_ice_cream = random.choice(['ice_cream', 'candy'])
@@ -161,13 +180,16 @@ while running:
                     Ice_cream()
                 else:
                     Candy()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 3:
+                pause()
     game_screen.blit(fon, (0, 0))
-    draw_text(game_screen, str(quantity), 18, width / 2, 10, 'black')
     all_sprites.draw(game_screen)
     candy_group.update()
     ice_cream_group.update()
+    draw_text(game_screen, str(quantity), 36, width / 2, 10, 'black')
     if pygame.mixer.music.get_busy() == False:
         game_over_screen()
-    clock.tick(40)
+    clock.tick(60)
     pygame.display.flip()
 pygame.quit()
