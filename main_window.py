@@ -1,22 +1,18 @@
 import pygame
 import sys
 import os
+from registration_window import registration
+
 
 pygame.init()
-size = surface_width, surface_height = 800, 600
+size = screen_width, screen_height = 800, 600
+screen = pygame.display.set_mode(size)
 
-surface = pygame.display.set_mode(size)
-pygame.display.set_caption('Singing Cat')
-surface.fill('#ffc2cc')
-font = pygame.font.Font('fonts/Cat.otf', 120)
-text = font.render('Singing Cat', True, 'yellow')
-surface.blit(text, ((surface_width - text.get_rect()[2]) // 2, 50))
+background_sound = pygame.mixer.Sound('music/Angel We Have Heard On High.mp3')
+background_sound.play()
 
-pygame.mixer.music.load('music/Angel We Have Heard On High.mp3')
-pygame.mixer.music.play()
-
-buttonFont = pygame.font.Font('fonts/Collect Em All BB.ttf', 28)
 buttons = []
+buttonFont = pygame.font.Font('fonts/Collect Em All BB.ttf', 28)
 
 
 class Button:
@@ -46,6 +42,7 @@ class Button:
                 if self.onePress:
                     self.function()
                 elif not self.alreadyPress:
+
                     self.function()
                     self.alreadyPress = True
             else:
@@ -53,24 +50,10 @@ class Button:
         self.buttonSurface.blit(self.buttonSurf, [
             self.buttonRect.width / 2 - self.buttonSurf.get_rect().width / 2,
             self.buttonRect.height / 2 - self.buttonSurf.get_rect().height / 2])
-        surface.blit(self.buttonSurface, self.buttonRect)
+        screen.blit(self.buttonSurface, self.buttonRect)
 
 
-def func():
-    print(':)')
-
-
-def exit():
-    pygame.quit()
-    sys.exit()
-
-
-Button(100, 230, 600, 80, 'Играть', func)
-Button(100, 320, 600, 80, 'Правила', func)
-Button(100, 410, 600, 80, 'Выйти', exit)
-
-
-def image_load(name, colorkey=None):
+def load_image(name, colorkey=None):
     fullname = os.path.join('pictures', name)
     if not os.path.isfile(fullname):
         print(f"Файл с изображением '{fullname}' не найден")
@@ -86,40 +69,49 @@ def image_load(name, colorkey=None):
     return image
 
 
-class MusicButton:
-    def __init__(self, x, y, default_image, clicked_image):
-        self.default_image = pygame.transform.scale(pygame.image.load(default_image), (100, 100))
-        self.clicked_image = pygame.transform.scale(pygame.image.load(clicked_image), (100, 100))
-        self.image = self.default_image
-        self.rect = self.image.get_rect()
-        self.rect.topleft = (x, y)
-        self.clicked = False
-
-    def draw(self, screen):
-        action = False
-        pos = pygame.mouse.get_pos()
-        if self.rect.collidepoint(pos):
-            if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
-                self.clicked = True
-                action = True
-                self.image = self.clicked_image
-        if pygame.mouse.get_pressed()[0] == 0:
-            self.clicked = False
-            self.image = self.default_image
-        screen.blit(self.image, (self.rect.x, self.rect.y))
-        return action
+def open_registration_window():
+    registration()
 
 
-MusicButton(690, 450, 'pictures/volume.png', 'pictures/mute.png')
-pygame.display.update()
+def open_leaderboard():
+    pass
 
 
+def terminate():
+    pygame.quit()
+    sys.exit()
+
+
+Button(60, 260, 300, 70, 'Играть', open_registration_window)
+Button(60, 340, 300, 70, 'Таблица лидеров', open_leaderboard)
+Button(60, 420, 300, 70, 'Выйти', terminate)
+
+
+def start_screen():
+    heading = 'Singing Cat'
+    fon = pygame.transform.scale(pygame.image.load('pictures/fon.gif'), size)
+    screen.blit(fon, (0, 0))
+    font = pygame.font.Font('fonts/Cat.otf', 120)
+    heading_render = font.render(heading, 1, pygame.Color('white'))
+    heading_rect = heading_render.get_rect()
+    heading_rect.top = 40
+    heading_rect.x = (screen_width - heading_rect[2]) / 2
+    screen.blit(heading_render, heading_rect)
+    while True:
+        for btn in buttons:
+            btn.process()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                terminate()
+        pygame.display.flip()
+
+
+start_screen()
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    for btn in buttons:
-        btn.process()
     pygame.display.flip()
+pygame.quit()
