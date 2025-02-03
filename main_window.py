@@ -24,7 +24,7 @@ class Button:
         self.alreadyPress = False
         self.fillColors = {
             'normal': '#ffffff',
-            'hover': '#666666',
+            'hover': '#876c99',
             'pressed': '#333333'
         }
         self.buttonSurface = pygame.Surface((self.width, self.height))
@@ -82,15 +82,15 @@ def terminate():
     sys.exit()
 
 
-Button(60, 260, 300, 70, 'Играть', open_registration_window)
-Button(60, 340, 300, 70, 'Таблица лидеров', open_leaderboard)
-Button(60, 420, 300, 70, 'Выйти', terminate)
+Button(470, 260, 300, 70, 'Играть', open_registration_window)
+Button(470, 340, 300, 70, 'Таблица лидеров', open_leaderboard)
+Button(470, 420, 300, 70, 'Выйти', terminate)
 
 
 def start_screen():
     heading = 'Singing Cat'
-    fon = pygame.transform.scale(pygame.image.load('pictures/fon.gif'), size)
-    screen.blit(fon, (0, 0))
+    fon = pygame.transform.scale(pygame.image.load('pictures/new_fon.gif'), (800, 800))
+    screen.blit(fon, (0, -150))
     font = pygame.font.Font('fonts/Cat.otf', 120)
     heading_render = font.render(heading, 1, pygame.Color('white'))
     heading_rect = heading_render.get_rect()

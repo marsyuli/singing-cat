@@ -4,7 +4,7 @@ import sqlite3
 
 
 pygame.init()
-size = screen_width, screem_height = 800, 600
+size = screen_width, screen_height = 800, 600
 screen = pygame.display.set_mode(size)
 
 buttons = []
@@ -38,7 +38,6 @@ class Button:
                 if self.onePress:
                     self.function()
                 elif not self.alreadyPress:
-
                     self.function()
                     self.alreadyPress = True
             else:
@@ -54,20 +53,30 @@ def terminate():
     sys.exit()
 
 
-Button(225, 400, 350, 70, 'Войти', terminate)
+def log_in():
+    users = dict()
+    con = sqlite3.connect('users_db.sqlite')
+    cur = con.cursor()
+    all_users = cur.execute("SELECT * FROM all_users").fetchall()
+    print(1)
+    con.close()
+
+
+Button(225, 400, 350, 70, 'Войти', log_in)
 Button(225, 480, 350, 70, 'Зарегистрироваться', terminate)
 
 
 def registration():
     heading = 'Войдите или зарегистрируйтесь'
-    fon = pygame.transform.scale(pygame.image.load('pictures/fon.gif'), size)
-    screen.blit(fon, (0, 0))
+    fon = pygame.transform.scale(pygame.image.load('pictures/new_fon.gif'), (800, 800))
+    screen.blit(fon, (0, -150))
     heading_font = pygame.font.Font('fonts/Collect Em All BB.ttf', 42)
     heading_render = heading_font.render(heading, 1, pygame.Color('white'))
     heading_rect = heading_render.get_rect()
     heading_rect.top = 40
     heading_rect.x = (screen_width - heading_rect[2]) / 2
     screen.blit(heading_render, heading_rect)
+
     text_font = pygame.font.Font('fonts/Collect Em All BB.ttf', 32)
     text = ['Имя пользователя:', 'Пароль:']
     for i in range(len(text)):
@@ -75,12 +84,14 @@ def registration():
         shade_render = text_font.render(text[i], 1, pygame.Color('black'))
         text_rect = text_render.get_rect()
         shade_rect = shade_render.get_rect()
-        text_rect.top, shade_rect.top = 200 + (i * 70), 200 + (70 * i) + 2.5
-        text_rect.x, shade_rect.x = 100, 102.5
+        text_rect.top, shade_rect.top = 170 + (i * 70), 170 + (70 * i) + 2.5
+        text_rect.x, shade_rect.x = 150, 152.5
         screen.blit(shade_render, shade_rect)
         screen.blit(text_render, text_rect)
-    username, password = '', ''
-    username_rect, password_rect = pygame.Rect(400, 207, 200, 30), pygame.Rect(220, 277, 200, 30)
+
+    username, hidden_password = '', ''
+    password = ''
+    username_rect, password_rect = pygame.Rect(450, 177, 200, 30), pygame.Rect(268, 247, 200, 30)
     normal_color = pygame.Color('white')
     hover_color = pygame.Color('lightgrey')
     username_color, password_color = hover_color, hover_color
@@ -108,9 +119,11 @@ def registration():
                     username += event.unicode
             if event.type == pygame.KEYDOWN and password_flag:
                 if event.key == pygame.K_BACKSPACE:
+                    hidden_password = hidden_password[:-1]
                     password = password[:-1]
                 else:
-                    username += '*'
+                    hidden_password += '*'
+                    password += event.unicode
         if username_flag:
             username_color = normal_color
         elif password_flag:
@@ -119,22 +132,18 @@ def registration():
             username_color, password_color = hover_color, hover_color
         pygame.draw.rect(screen, username_color, username_rect)
         text_surface = text_font.render(username, True, (0, 0, 0))
-        screen.blit(text_surface, (username_rect.x + 5, username_rect.y + 5))
+        screen.blit(text_surface, (username_rect.x + 5, username_rect.y - 3.5))
         username_rect.w = max(100, text_surface.get_width() + 10)
 
         pygame.draw.rect(screen, password_color, password_rect)
-        text_surface1 = text_font.render(password, True, (0, 0, 0))
-        screen.blit(text_surface1, (password_rect.x + 5, password_rect.y + 5))
+        text_surface1 = text_font.render(hidden_password, True, (0, 0, 0))
+        screen.blit(text_surface1, (password_rect.x + 5, password_rect.y - 3.5))
         password_rect.w = max(100, text_surface1.get_width() + 10)
         pygame.display.flip()
 
 
 registration()
-running = True
-while running:
+while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-    pygame.display.flip()
-pygame.quit()
+            terminate()
