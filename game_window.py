@@ -99,18 +99,19 @@ class Ice_cream(pygame.sprite.Sprite): # Создание мороженого
 
     def update(self): # Передвижение мороженого + удаление мороженого + изменение кота
         global quantity
-        if not pygame.sprite.collide_mask(self, cat):
-            self.rect = self.rect.move(0, 1)
-            if self.rect.y == 480:
+        if pygame.mixer.music.get_busy():
+            if not pygame.sprite.collide_mask(self, cat):
+                self.rect = self.rect.move(0, 1)
+                if self.rect.y == 480:
+                    self.kill()
+                    quantity -= 10
+            else:
+                if cat.image == cat.cat_right_image:
+                    cat.image = cat.cat_mouth_right
+                elif cat.image == cat.cat_left_image:
+                    cat.image = cat.cat_mouth_image
+                quantity += 10
                 self.kill()
-                quantity -= 10
-        else:
-            if cat.image == cat.cat_right_image:
-                cat.image = cat.cat_mouth_right
-            elif cat.image == cat.cat_left_image:
-                cat.image = cat.cat_mouth_image
-            quantity += 10
-            self.kill()
 
 
 class Candy(pygame.sprite.Sprite): # Создание конфеты
@@ -126,18 +127,19 @@ class Candy(pygame.sprite.Sprite): # Создание конфеты
 
     def update(self): # Передвижение конфеты + удаление конфеты + изменение кота
         global quantity
-        if not pygame.sprite.collide_mask(self, cat):
-            self.rect = self.rect.move(0, 1)
-            if self.rect.y == 480:
+        if pygame.mixer.music.get_busy():
+            if not pygame.sprite.collide_mask(self, cat):
+                self.rect = self.rect.move(0, 1)
+                if self.rect.y == 480:
+                    self.kill()
+                    quantity -= 15
+            else:
+                if cat.image == cat.cat_right_image:
+                    cat.image = cat.cat_mouth_right
+                elif cat.image == cat.cat_left_image:
+                    cat.image = cat.cat_mouth_image
+                quantity += 15
                 self.kill()
-                quantity -= 15
-        else:
-            if cat.image == cat.cat_right_image:
-                cat.image = cat.cat_mouth_right
-            elif cat.image == cat.cat_left_image:
-                cat.image = cat.cat_mouth_image
-            quantity += 15
-            self.kill()
 
 
 def pause(): # Функция паузы игры

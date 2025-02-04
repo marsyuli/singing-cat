@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e8b03b2-8fa4-42da-8335-62ff41198918" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/doc/Singing cat video.mp4" afterDir="false" />
+    <list default="true" id="6e8b03b2-8fa4-42da-8335-62ff41198918" name="Changes" comment="add video and presentation">
+      <change afterPath="$PROJECT_DIR$/doc/Singing cat записка.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_window.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +29,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2sHUKMPR36ZAKXelg4uC5ttKo2n" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,7 +41,9 @@
   &quot;keyToString&quot;: {
     &quot;Python.game_window.executor&quot;: &quot;Run&quot;,
     &quot;Python.main_window.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;detached&quot;
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;detached&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/PycharmProjects/singing-cat2&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -55,6 +61,9 @@
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="C:\Users\yandex-2023\AppData\Local\Programs\Python\Python311\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -155,7 +164,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
+        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
       </set>
     </attachedChunks>
   </component>
@@ -175,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738252089332</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add video and presentation">
+      <option name="closed" value="true" />
+      <created>1738669138407</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738669138407</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,6 +209,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add kill candy and kill ice_cream" />
     <MESSAGE value="add leaderboar" />
-    <option name="LAST_COMMIT_MESSAGE" value="add leaderboar" />
+    <MESSAGE value="add video and presentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="add video and presentation" />
   </component>
 </project>
