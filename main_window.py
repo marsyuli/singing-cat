@@ -2,13 +2,14 @@ import pygame
 import sys
 import os
 from registration_window import registration
+from sound import background_sound
+from leaderboard import leaderboard
 
 
 pygame.init()
 size = screen_width, screen_height = 800, 600
 screen = pygame.display.set_mode(size)
 
-background_sound = pygame.mixer.Sound('music/Angel We Have Heard On High.mp3')
 background_sound.play()
 
 buttons = []
@@ -74,7 +75,7 @@ def open_registration_window():
 
 
 def open_leaderboard():
-    pass
+    leaderboard()
 
 
 def terminate():
