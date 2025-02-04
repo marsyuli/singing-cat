@@ -78,11 +78,11 @@ class Cat(pygame.sprite.Sprite): # Создание кота
         # Передвижение кота + изменение картинки
         if event.key == pygame.K_LEFT:
             if self.rect.x > 15:
-                self.rect.x -= 10
+                self.rect.x -= 8
                 self.image = Cat.cat_right_image
         if event.key == pygame.K_RIGHT:
             if self.rect.x < 350:
-                self.rect.x += 10
+                self.rect.x += 8
                 self.image = Cat.cat_left_image
 
 
@@ -103,12 +103,13 @@ class Ice_cream(pygame.sprite.Sprite): # Создание мороженого
             self.rect = self.rect.move(0, 1)
             if self.rect.y == 480:
                 self.kill()
+                quantity -= 10
         else:
             if cat.image == cat.cat_right_image:
                 cat.image = cat.cat_mouth_right
             elif cat.image == cat.cat_left_image:
                 cat.image = cat.cat_mouth_image
-            quantity += 1
+            quantity += 10
             self.kill()
 
 
@@ -129,12 +130,13 @@ class Candy(pygame.sprite.Sprite): # Создание конфеты
             self.rect = self.rect.move(0, 1)
             if self.rect.y == 480:
                 self.kill()
+                quantity -= 15
         else:
             if cat.image == cat.cat_right_image:
                 cat.image = cat.cat_mouth_right
             elif cat.image == cat.cat_left_image:
                 cat.image = cat.cat_mouth_image
-            quantity += 1
+            quantity += 15
             self.kill()
 
 
@@ -158,6 +160,7 @@ board = Board()
 cat = Cat()
 quantity = 0
 clock = pygame.time.Clock()
+
 
 def game():
     global board, cat, quantity, clock

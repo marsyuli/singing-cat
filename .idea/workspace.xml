@@ -7,9 +7,6 @@
     <list default="true" id="6e8b03b2-8fa4-42da-8335-62ff41198918" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leaderboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/registration_window.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +35,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.game_window.executor": "Run",
     "Python.main_window.executor": "Run",
-    "git-widget-placeholder": "6bbb4669"
+    "git-widget-placeholder": "detached"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -150,8 +148,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main_window" />
-        <item itemvalue="Python.registration_window" />
         <item itemvalue="Python.game_window" />
+        <item itemvalue="Python.registration_window" />
         <item itemvalue="Python.main window" />
         <item itemvalue="Python.main window" />
       </list>
