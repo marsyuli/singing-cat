@@ -157,10 +157,10 @@ def pause(): # Функция паузы игры
 board = Board()
 cat = Cat()
 quantity = 0
+clock = pygame.time.Clock()
 
 def game():
-    global board, cat, quantity
-    clock = pygame.time.Clock()
+    global board, cat, quantity, clock
     pygame.mixer.music.play()
     pygame.time.set_timer(pygame.USEREVENT, 2000)
     fon = pygame.transform.scale(load_image('game_fon.jpg'), (500, 600))

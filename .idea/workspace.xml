@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e8b03b2-8fa4-42da-8335-62ff41198918" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pictures/new_fon.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_window.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/registration_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/registration_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/users_db.sqlite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +36,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="restartRequiresConfirmation" value="false" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main_window.executor": "Run",
+    "git-widget-placeholder": "6bbb4669"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\yandex-2023\Desktop\singing-cat5" />
@@ -52,8 +52,9 @@
       <recent name="C:\Users\mksen\PycharmProjects\singing-cat" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.registration_window">
+  <component name="RunManager" selected="Python.main_window">
     <configuration name="game_window" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -75,6 +76,7 @@
       <method v="2" />
     </configuration>
     <configuration name="main window" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -97,6 +99,7 @@
     </configuration>
     <configuration name="main_window" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="singing-cat2" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -118,6 +121,7 @@
     </configuration>
     <configuration name="registration_window" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="singing-cat2" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -137,10 +141,16 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.game_window" />
+      <item itemvalue="Python.main window" />
+      <item itemvalue="Python.main_window" />
+      <item itemvalue="Python.registration_window" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.registration_window" />
         <item itemvalue="Python.main_window" />
+        <item itemvalue="Python.registration_window" />
         <item itemvalue="Python.game_window" />
         <item itemvalue="Python.main window" />
         <item itemvalue="Python.main window" />
@@ -183,10 +193,10 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add kill candy and kill ice_cream" />
-    <option name="LAST_COMMIT_MESSAGE" value="add kill candy and kill ice_cream" />
+    <MESSAGE value="add leaderboar" />
+    <option name="LAST_COMMIT_MESSAGE" value="add leaderboar" />
   </component>
 </project>

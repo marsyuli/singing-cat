@@ -16,7 +16,7 @@ buttons = []
 buttonFont = pygame.font.Font('fonts/Collect Em All BB.ttf', 28)
 
 
-class Button:
+class Button: # Класс для создания кнопок
     def __init__(self, x, y, width, height, buttonText='', function=None, onePress=False):
         self.x, self.y, self.width, self.height = x, y, width, height
         self.buttonText = buttonText
@@ -54,7 +54,7 @@ class Button:
         screen.blit(self.buttonSurface, self.buttonRect)
 
 
-def load_image(name, colorkey=None):
+def load_image(name, colorkey=None): # функция для загрузки изображений
     fullname = os.path.join('pictures', name)
     if not os.path.isfile(fullname):
         print(f"Файл с изображением '{fullname}' не найден")
@@ -70,15 +70,15 @@ def load_image(name, colorkey=None):
     return image
 
 
-def open_registration_window():
+def open_registration_window(): # Открытие окна регистрации
     registration()
 
 
-def open_leaderboard():
+def open_leaderboard(): # Открытие таблицы лидеров
     leaderboard()
 
 
-def terminate():
+def terminate(): # Закрытие окна
     pygame.quit()
     sys.exit()
 
@@ -88,7 +88,7 @@ Button(470, 340, 300, 70, 'Таблица лидеров', open_leaderboard)
 Button(470, 420, 300, 70, 'Выйти', terminate)
 
 
-def start_screen():
+def start_screen(): # Главный экран
     heading = 'Singing Cat'
     fon = pygame.transform.scale(pygame.image.load('pictures/new_fon.gif'), (800, 800))
     screen.blit(fon, (0, -150))

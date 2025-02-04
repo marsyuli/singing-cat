@@ -13,7 +13,7 @@ buttons = []
 buttonFont = pygame.font.Font('fonts/Collect Em All BB.ttf', 28)
 
 
-class Button:
+class Button: # Класс для создания кнопок
     def __init__(self, x, y, width, height, buttonText='', function=None, onePress=False):
         self.x, self.y, self.width, self.height = x, y, width, height
         self.buttonText = buttonText
@@ -52,11 +52,11 @@ class Button:
 
 flag = False
 
-def terminate():
+def terminate(): # Закрытие окна
     pygame.quit()
     sys.exit()
 
-def start_game():
+def start_game(): # Начало игры
     global flag
     flag = True
     if flag:
@@ -64,7 +64,7 @@ def start_game():
         pygame.display.set_mode((500, 600))
         game()
 
-def correct_name(username):
+def correct_name(username): # Проверка на существование пользователя
     global flag
     users = dict()
     con = sqlite3.connect('users_db.sqlite')
@@ -84,7 +84,7 @@ text_font = pygame.font.Font('fonts/Collect Em All BB.ttf', 32)
 Button(225, 400, 350, 70, 'Продолжить', start_game)
 
 
-def registration():
+def registration(): # Окно регистрации
     global normal_color, hover_color, text_font
     heading = 'Введите имя пользователя'
     fon = pygame.transform.scale(pygame.image.load('pictures/new_fon.gif'), (800, 800))

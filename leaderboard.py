@@ -8,12 +8,12 @@ size = screen_width, screen_height = 800, 600
 screen = pygame.display.set_mode(size)
 
 
-def terminate():
+def terminate(): # Закрытие окна
     pygame.init()
     sys.exit()
 
 
-def leaderboard():
+def leaderboard(): # Создание таблицы лидеров
     heading = 'Таблица лидеров'
     fon = pygame.transform.scale(pygame.image.load('pictures/new_fon.gif'), (800, 800))
     screen.blit(fon, (0, -150))
