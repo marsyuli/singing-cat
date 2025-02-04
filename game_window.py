@@ -16,7 +16,7 @@ game_screen.fill('#EFCDD6')
 pygame.mixer.music.load('music/Billie_Eilish-What_Was_I_Made_For.mp3')
 
 
-def load_image(name, colorkey=None):
+def load_image(name, colorkey=None): # функция для загрузки изображений
     fullname = os.path.join('pictures', name)
     if not os.path.isfile(fullname):
         print(f"Файл с изображением '{fullname}' не найден")
@@ -71,7 +71,7 @@ class Cat(pygame.sprite.Sprite): # Создание кота
         super().__init__(all_sprites, cat_group)
         self.image = Cat.cat_right_image
         self.rect = self.image.get_rect()
-        self.rect.x = 50
+        self.rect.x = 170
         self.rect.y = 305
 
     def update(self, event):
