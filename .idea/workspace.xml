@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e8b03b2-8fa4-42da-8335-62ff41198918" name="Changes" comment="add video and presentation">
-      <change afterPath="$PROJECT_DIR$/doc/Singing cat записка.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leaderboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/leaderboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registration_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/registration_window.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,11 +24,23 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="a297271a10f993e3638271937822ae8830882ef7" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ksewstae&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/marsyuli/singing-cat.git&quot;,
+    &quot;accountId&quot;: &quot;74fb07d6-8ba0-488c-9a0f-7df6a96afa28&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -37,15 +49,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.game_window.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main_window.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;detached&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/PycharmProjects/singing-cat2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.game_window.executor": "Run",
+    "Python.leaderboard.executor": "Run",
+    "Python.main_window.executor": "Run",
+    "Python.registration_window.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "git-widget-placeholder": "detached",
+    "last_opened_file_path": "C:/Users/User/PycharmProjects/singing-cat2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\yandex-2023\Desktop\singing-cat5" />
@@ -71,6 +85,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/game_window.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="leaderboard" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="singing-cat2" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leaderboard.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -146,6 +182,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.leaderboard" />
       <item itemvalue="Python.game_window" />
       <item itemvalue="Python.main window" />
       <item itemvalue="Python.main_window" />
@@ -154,9 +191,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main_window" />
-        <item itemvalue="Python.game_window" />
+        <item itemvalue="Python.leaderboard" />
         <item itemvalue="Python.registration_window" />
-        <item itemvalue="Python.main window" />
+        <item itemvalue="Python.game_window" />
         <item itemvalue="Python.main window" />
       </list>
     </recent_temporary>

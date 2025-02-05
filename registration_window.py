@@ -56,6 +56,7 @@ def terminate(): # Закрытие окна
     pygame.quit()
     sys.exit()
 
+
 def start_game(): # Начало игры
     global flag
     flag = True
@@ -67,13 +68,18 @@ def start_game(): # Начало игры
 def correct_name(username): # Проверка на существование пользователя
     global flag
     users = dict()
+    max_id = 0
     con = sqlite3.connect('users_db.sqlite')
     cur = con.cursor()
     all_users = cur.execute("""SELECT * FROM all_users""").fetchall()
     for user in all_users:
         users[user[1]] = user[2]
-    if username not in list(users.keys()):
-        pass
+        if user[0] > max_id:
+            max_id = user[0]
+    # if username not in list(users.keys()):
+        # cur.execute(f'INSERT INTO all_users (id, username, score) VALUES ({max_id + 1}, {username}, 0)')
+    # con.commit()
+    # con.close()
 
 
 normal_color = pygame.Color('white')
