@@ -121,6 +121,9 @@ def registration(): # Окно регистрации
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 terminate()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    terminate()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if username_rect.collidepoint(event.pos):
                     username_flag = True

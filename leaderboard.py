@@ -44,4 +44,7 @@ def leaderboard(): # Создание таблицы лидеров
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 terminate()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    terminate()
         pygame.display.flip()

@@ -175,6 +175,10 @@ def game():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+            if event.type == pygame.KEYDOWN:
                 cat_group.update(event)
             if event.type == pygame.USEREVENT:
                 if pygame.mixer.music.get_busy():
